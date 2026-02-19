@@ -19,10 +19,10 @@ This repository is the official implementation of: Collaborative Map-based and R
 
 To set up the conda environment, please follow the guidelines provided by the baseline methods: [ETPNav](https://github.com/MarSaKi/ETPNav) and [g3D-LF](https://github.com/MrZihan/g3D-LF). Configuring the environment for these baselines is sufficient to meet all the requirements for CoMaR; no additional dependencies are needed. For your convenience, we also provide a ready-to-use environment configuration file: `env.yml`.Specifically, the environment setup process of the baselines is as follows:
 
-**1. Install Habitat Simulator**
+### 1. Install Habitat Simulator:
 Follow the installation instructions from [ETPNav](https://github.com/MarSaKi/ETPNav) or the original [VLN-CE](https://github.com/jacobkrantz/VLN-CE) repository.
 
-**2. Install `torch_kdtree` (Required for g3D-LF)**
+### 2. Install `torch_kdtree` (Required for g3D-LF):
 For K-nearest feature search in g3D-LF, install `torch_kdtree` from the [official repository](https://github.com/thomgrand/torch_kdtree):
 ```bash
 git clone [https://github.com/thomgrand/torch_kdtree](https://github.com/thomgrand/torch_kdtree)
@@ -33,7 +33,7 @@ pip3 install .
 
 ```
 
-**3. Install `tinycudann` (Required for g3D-LF)**
+### 3. Install `tinycudann` (Required for g3D-LF):
 For faster multi-layer perceptrons (MLPs) in g3D-LF, install `tinycudann` from [tiny-cuda-nn](https://github.com/NVlabs/tiny-cuda-nn):
 
 ```bash
