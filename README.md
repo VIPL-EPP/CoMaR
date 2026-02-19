@@ -17,11 +17,7 @@ This repository is the official implementation of: Collaborative Map-based and R
 
 ## Requirements
 
-To set up the conda environment, please follow the guidelines provided by the baseline methods: [ETPNav](https://github.com/MarSaKi/ETPNav) and [g3D-LF](https://github.com/MrZihan/g3D-LF). Configuring the environment for these baselines is sufficient to meet all the requirements for CoMaR; no additional dependencies are needed. 
-
-For your convenience, we also provide a ready-to-use environment configuration file: `env.yml`.
-
-Specifically, the environment setup process of the baselines is as follows:
+To set up the conda environment, please follow the guidelines provided by the baseline methods: [ETPNav](https://github.com/MarSaKi/ETPNav) and [g3D-LF](https://github.com/MrZihan/g3D-LF). Configuring the environment for these baselines is sufficient to meet all the requirements for CoMaR; no additional dependencies are needed. For your convenience, we also provide a ready-to-use environment configuration file: `env.yml`.Specifically, the environment setup process of the baselines is as follows:
 
 **1. Install Habitat Simulator**
 Follow the installation instructions from [ETPNav](https://github.com/MarSaKi/ETPNav) or the original [VLN-CE](https://github.com/jacobkrantz/VLN-CE) repository.
