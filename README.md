@@ -47,9 +47,7 @@ Download the required model checkpoints from our [Google Drive](https://drive.go
 
 ## Evaluation
 
-We have adapted the CoMaR framework for the baseline methods [ETPNav](https://github.com/MarSaKi/ETPNav) and [g3D-LF](https://github.com/MrZihan/g3D-LF). The specific implementations are included in the new `vlnce_baselines` folder provided in this repository. 
-
-To evaluate the models, simply replace the original `vlnce_baselines` folder in the respective baseline repositories with the one we provide. The overall evaluation process follows the original guidelines from ETPNav and g3D-LF.Specifically, you can run the following commands for evaluation:
+We have adapted the CoMaR framework for the baseline methods [ETPNav](https://github.com/MarSaKi/ETPNav) and [g3D-LF](https://github.com/MrZihan/g3D-LF). The specific implementations are included in the new `vlnce_baselines` folder provided in this repository. To evaluate the models, simply replace the original `vlnce_baselines` folder in the respective baseline repositories with the one we provide. The overall evaluation process follows the original guidelines from ETPNav and g3D-LF.Specifically, you can run the following commands for evaluation:
 
 ### For ETPNav
 
