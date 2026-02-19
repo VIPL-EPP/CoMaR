@@ -15,3 +15,35 @@ This repository is the official implementation of: Collaborative Map-based and R
 - [ ] Release real-world deployment code on the Unitree robot dog.
 
 
+## Requirements
+
+To set up the conda environment, please follow the guidelines provided by the baseline methods: [ETPNav](https://github.com/MarSaKi/ETPNav) and [g3D-LF](https://github.com/MrZihan/g3D-LF). Configuring the environment for these baselines is sufficient to meet all the requirements for CoMaR; no additional dependencies are needed. 
+
+For your convenience, we also provide a ready-to-use environment configuration file: `env.yml`.
+
+Specifically, the environment setup process of the baselines is as follows:
+
+**1. Install Habitat Simulator**
+Follow the installation instructions from [ETPNav](https://github.com/MarSaKi/ETPNav) or the original [VLN-CE](https://github.com/jacobkrantz/VLN-CE) repository.
+
+**2. Install `torch_kdtree` (Required for g3D-LF)**
+For K-nearest feature search in g3D-LF, install `torch_kdtree` from the [official repository](https://github.com/thomgrand/torch_kdtree):
+```bash
+git clone [https://github.com/thomgrand/torch_kdtree](https://github.com/thomgrand/torch_kdtree)
+cd torch_kdtree
+git submodule init
+git submodule update
+pip3 install .
+
+```
+
+**3. Install `tinycudann` (Required for g3D-LF)**
+For faster multi-layer perceptrons (MLPs) in g3D-LF, install `tinycudann` from [tiny-cuda-nn](https://github.com/NVlabs/tiny-cuda-nn):
+
+```bash
+pip3 install git+[https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch](https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch)
+
+```
+
+**4. Download Checkpoints**
+Download the required model checkpoints from our [Google Drive](https://drive.google.com/drive/folders/1WDvmWeZ6c4uPqaGEGufvSfigFh7che4u?usp=drive_link).
