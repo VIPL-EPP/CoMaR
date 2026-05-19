@@ -12,7 +12,7 @@ This repository is the official implementation of: Collaborative Map-based and R
 - [x] Release evaluation model checkpoints and evaluation code for CoMaR<sub>g3D-LF</sub>.
 - [ ] Release training pipeline and training code for CoMaR<sub>ETPNav</sub>.
 - [ ] Release training pipeline and training code for CoMaR<sub>g3D-LF</sub>.
-- [ ] Release real-world deployment code on the Unitree robot dog.
+- [x] Release real-world deployment code on the Unitree robot dog.
 
 
 ## Requirements
