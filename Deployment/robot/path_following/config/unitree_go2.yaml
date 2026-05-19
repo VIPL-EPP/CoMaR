@@ -1,0 +1,37 @@
+path_following:
+  ros__parameters:
+    sensorOffsetX: 0.34305
+    sensorOffsetY: 0.0
+    pubSkipNum: 1
+    twoWayDrive: false
+    lookAheadDis: 0.25
+    yawRateGain: 4.0
+    stopYawRateGain: 4.0
+    maxYawRate: 90.0
+    maxSpeed: 0.7
+    maxAccel: 2.5
+    switchTimeThre: 1.0
+    dirDiffThre: 0.7
+    stopDisThre: 0.4
+    slowDwnDisThre: 0.3
+    useInclRateToSlow: false
+    inclRateThre: 120.0
+    slowRate1: 0.25
+    slowRate2: 0.5
+    slowTime1: 2.0
+    slowTime2: 2.0
+    useInclToStop: false
+    inclThre: 45.0
+    stopTime: 5.0
+    noRotAtStop: false
+    noRotAtGoal: true
+    autonomyMode: true
+    autonomySpeed: 0.7
+    joyToSpeedDelay: 2.0
+    odomTopic: /sportmodestate
+    commandTopic: /local_guidance_path_follower/twist
+    pathTopic: "/viplanner/path/world_frame"
+    baseFrame: base
+    baseInverted: false
+    relativeMode: false
+

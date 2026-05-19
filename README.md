@@ -69,5 +69,39 @@ bash run_r2r/main.bash eval 2347
 bash run_rxr/main.bash eval 2347
 ```
 
+## (Optional) Run on a Unitree Go2 Robot for Real-world VLN
+
+We also validate CoMaR on a real Unitree Go2 robot equipped with an external computing dock. In our deployment setting, the VLN planning module runs on a remote server, while the low-level control modules, including path following, run onboard the robot.
+
+Please make sure that the robot and the remote server are connected to the same local area network (LAN).
+
+### Server Setup
+
+First, download the `pretrained` and `bert_config` folders from our [Google Drive](https://drive.google.com/drive/folders/1WDvmWeZ6c4uPqaGEGufvSfigFh7che4u?usp=drive_link). These folders contain the CoMaR model checkpoint and other required parameters for real-world deployment.
+
+Then run the server-side code:
+
+```bash
+cd Deployment/server
+python3 run.py
+```
+
+### Robot Setup
+
+The Robot directory contains two ROS2 packages:
+
+* robot_code: communicates with the remote server to obtain real-time subgoals and sends them to the path-following module.
+* path_following: converts the received subgoals into low-level execution commands for the Unitree Go2 robot.
+
+Create a ROS2 workspace on the robot, copy the two packages into the workspace, and build them. Before running the robot-side code, set the server IP address in robot_node.py to the IP address of the remote server within the LAN.
+
+Then launch the robot-side modules:
+
+```bash
+source install/setup.bash
+ros2 run robot_code robot_node
+ros2 launch path_following path_following.launch.py
+```
+
 ## Acknowledgements
 Our code is based on [g3D-LF](https://github.com/MrZihan/g3D-LF), [PRET](https://github.com/iSEE-Laboratory/VLN-PRET) and [ETPNav](https://github.com/MarSaKi/ETPNav). Thanks for their great works!
