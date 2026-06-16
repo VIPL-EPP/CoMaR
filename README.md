@@ -45,7 +45,7 @@ pip3 install git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/t
 Download the required model checkpoints on R2R-CE from our [Google Drive](https://drive.google.com/drive/folders/1WDvmWeZ6c4uPqaGEGufvSfigFh7che4u?usp=drive_link).
 
 
-## (OPtional)Training
+## (OPtional) Training
 
 We have adapted the CoMaR framework to the baseline methods [ETPNav](https://github.com/MarSaKi/ETPNav) and [g3D-LF](https://github.com/MrZihan/g3D-LF). The corresponding training implementations are included in the new `vlnce_baselines` folder provided in this repository. To train CoMaR on top of these baselines, replace the original `vlnce_baselines` folder in the respective baseline repositories with the one we provide. The overall training process follows the original training protocols of ETPNav and g3D-LF, with an additional two-stage fine-tuning procedure introduced for collaborative map-based and route-based policy learning on R2R-CE.
 
