@@ -8,16 +8,16 @@ This repository is the official implementation of: Collaborative Map-based and R
 
 ## TODO
 
-- [x] Release evaluation model checkpoints and evaluation code for CoMaR<sub>ETPNav</sub>.
-- [x] Release evaluation model checkpoints and evaluation code for CoMaR<sub>g3D-LF</sub>.
-- [ ] Release training pipeline and training code for CoMaR<sub>ETPNav</sub>.
-- [ ] Release training pipeline and training code for CoMaR<sub>g3D-LF</sub>.
+- [x] Release evaluation model checkpoints and evaluation code for CoMaR<sub>ETPNav</sub> on R2R-CE datasets.
+- [x] Release evaluation model checkpoints and evaluation code for CoMaR<sub>g3D-LF</sub> on R2R-CE datasets.
+- [x] Release training pipeline and training code for CoMaR<sub>ETPNav</sub> on R2R-CE datasets.
+- [x] Release training pipeline and training code for CoMaR<sub>g3D-LF</sub> on R2R-CE datasets.
 - [x] Release real-world deployment code on the Unitree robot dog.
 
 
 ## Requirements
 
-To set up the conda environment, please follow the guidelines provided by the baseline methods: [ETPNav](https://github.com/MarSaKi/ETPNav) and [g3D-LF](https://github.com/MrZihan/g3D-LF). Configuring the environment for these baselines is sufficient to meet all the requirements for CoMaR; no additional dependencies are needed. For your convenience, we also provide a ready-to-use environment configuration file: `env.yml`.Specifically, the environment setup process of the baselines is as follows:
+To set up the conda environment, please follow the guidelines provided by the baseline methods: [ETPNav](https://github.com/MarSaKi/ETPNav) and [g3D-LF](https://github.com/MrZihan/g3D-LF). Configuring the environment for these baselines is sufficient to meet all the requirements for CoMaR; no additional dependencies are needed. For your convenience, we also provide a ready-to-use environment configuration file: `env.yml`. Specifically, the environment setup process of the baselines is as follows:
 
 #### 1. Install Habitat Simulator:
 Follow the installation instructions from [ETPNav](https://github.com/MarSaKi/ETPNav) or the original [VLN-CE](https://github.com/jacobkrantz/VLN-CE) repository.
@@ -25,7 +25,7 @@ Follow the installation instructions from [ETPNav](https://github.com/MarSaKi/ET
 #### 2. Install `torch_kdtree` (Required for g3D-LF):
 For K-nearest feature search in g3D-LF, install `torch_kdtree` from the [official repository](https://github.com/thomgrand/torch_kdtree):
 ```bash
-git clone [https://github.com/thomgrand/torch_kdtree](https://github.com/thomgrand/torch_kdtree)
+git clone https://github.com/thomgrand/torch_kdtree
 cd torch_kdtree
 git submodule init
 git submodule update
@@ -37,12 +37,37 @@ pip3 install .
 For faster multi-layer perceptrons (MLPs) in g3D-LF, install `tinycudann` from [tiny-cuda-nn](https://github.com/NVlabs/tiny-cuda-nn):
 
 ```bash
-pip3 install git+[https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch](https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch)
+pip3 install git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch
 
 ```
 
 #### 4. Download Checkpoints
-Download the required model checkpoints from our [Google Drive](https://drive.google.com/drive/folders/1WDvmWeZ6c4uPqaGEGufvSfigFh7che4u?usp=drive_link).
+Download the required model checkpoints on R2R-CE from our [Google Drive](https://drive.google.com/drive/folders/1WDvmWeZ6c4uPqaGEGufvSfigFh7che4u?usp=drive_link).
+
+
+## (OPtional)Training
+
+We have adapted the CoMaR framework to the baseline methods [ETPNav](https://github.com/MarSaKi/ETPNav) and [g3D-LF](https://github.com/MrZihan/g3D-LF). The corresponding training implementations are included in the new `vlnce_baselines` folder provided in this repository. To train CoMaR on top of these baselines, replace the original `vlnce_baselines` folder in the respective baseline repositories with the one we provide. The overall training process follows the original training protocols of ETPNav and g3D-LF, with an additional two-stage fine-tuning procedure introduced for collaborative map-based and route-based policy learning on R2R-CE.
+
+In **Stage 1**, we freeze the parameters of the original map-based policy baseline, i.e., ETPNav or g3D-LF, and fine-tune the route-policy branch in the cross-modal encoding module, including the temporal Transformer and the route-policy prediction head. This stage allows the route-based policy to better capture instruction-following procedures and sequential navigation patterns while preserving the spatial reasoning ability of the pretrained map-based baseline.
+
+In **Stage 2**, we freeze the cross-modal encoding modules of both the map-based and route-based policy streams. We only fine-tune the map-policy head, the route-policy head, and the collaborative module that integrates the two policies. This stage further improves the cooperation between the map-based and route-based policies at both the feature and decision levels.
+
+The two-stage fine-tuning code has already been provided. You can run the following commands for training:
+
+### For ETPNav
+
+```bash
+# Train on R2R-CE
+CUDA_VISIBLE_DEVICES=0,1 bash run_r2r/main.bash train 2333
+```
+
+### For g3D-LF
+
+```bash
+# Train on R2R-CE
+bash run_r2r/main.bash train 2347
+```
 
 
 ## Evaluation
@@ -54,9 +79,6 @@ We have adapted the CoMaR framework for the baseline methods [ETPNav](https://gi
 ```bash
 # Evaluate on R2R-CE
 CUDA_VISIBLE_DEVICES=0,1 bash run_r2r/main.bash eval 2333
-
-# Evaluate on RxR-CE
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash run_rxr/main.bash eval 2333
 ```
 
 ### For g3D-LF
@@ -64,10 +86,8 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 bash run_rxr/main.bash eval 2333
 ```bash
 # Evaluate on R2R-CE
 bash run_r2r/main.bash eval 2347
-
-# Evaluate on RxR-CE
-bash run_rxr/main.bash eval 2347
 ```
+
 
 ## (Optional) Run on a Unitree Go2 Robot for Real-world VLN
 
