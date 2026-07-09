@@ -123,5 +123,20 @@ ros2 run robot_code robot_node
 ros2 launch path_following path_following.launch.py
 ```
 
+## Citation
+If you find our work useful in your research, please consider citing:
+```
+@ARTICLE{11373835,
+  author={Hou, Jiewen and Kan, Meina and Zhang, Lixuan and Liang, Hao and Shan, Shiguang and Chen, Xilin},
+  journal={IEEE Robotics and Automation Letters}, 
+  title={Collaborative Map-Based and Route-Based Policy Learning for Continuous Vision-and-Language Navigation}, 
+  year={2026},
+  volume={11},
+  number={4},
+  pages={4345-4352},
+  keywords={Navigation;Planning;Encoding;Cognition;Collaboration;Layout;Grounding;Transformers;Three-dimensional displays;Multiplexing;Vision-based navigation;ai-enabled robotics;representation learning},
+  doi={10.1109/LRA.2026.3662659}}
+```
+
 ## Acknowledgements
 Our code is based on [g3D-LF](https://github.com/MrZihan/g3D-LF), [PRET](https://github.com/iSEE-Laboratory/VLN-PRET) and [ETPNav](https://github.com/MarSaKi/ETPNav). Thanks for their great works!
