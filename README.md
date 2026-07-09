@@ -135,7 +135,8 @@ If you find our work useful in your research, please consider citing:
   number={4},
   pages={4345-4352},
   keywords={Navigation;Planning;Encoding;Cognition;Collaboration;Layout;Grounding;Transformers;Three-dimensional displays;Multiplexing;Vision-based navigation;ai-enabled robotics;representation learning},
-  doi={10.1109/LRA.2026.3662659}}
+  doi={10.1109/LRA.2026.3662659}
+}
 ```
 
 ## Acknowledgements
