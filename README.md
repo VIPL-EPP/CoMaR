@@ -125,7 +125,7 @@ ros2 launch path_following path_following.launch.py
 
 ## Citation
 If you find our work useful in your research, please consider citing:
-```
+```bibtex
 @article{hou2026comar,
   author={Hou, Jiewen and Kan, Meina and Zhang, Lixuan and Liang, Hao and Shan, Shiguang and Chen, Xilin},
   journal={IEEE Robotics and Automation Letters}, 
