@@ -13,6 +13,7 @@ This repository is the official implementation of: Collaborative Map-based and R
 - [x] Release training pipeline and training code for CoMaR<sub>ETPNav</sub> on R2R-CE datasets.
 - [x] Release training pipeline and training code for CoMaR<sub>g3D-LF</sub> on R2R-CE datasets.
 - [x] Release real-world deployment code on the Unitree robot dog.
+- [x] Release evaluation model checkpoints and evaluation code for CoMaR<sub>ETPNav</sub> on R2R-CE datasets.
 
 
 ## Requirements
@@ -42,7 +43,7 @@ pip3 install git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/t
 ```
 
 #### 4. Download Checkpoints
-Download the required model checkpoints on R2R-CE from our [Google Drive](https://drive.google.com/drive/folders/1WDvmWeZ6c4uPqaGEGufvSfigFh7che4u?usp=drive_link).
+Download the required model checkpoints on R2R-CE and RxR-CE from our [Google Drive](https://drive.google.com/drive/folders/1WDvmWeZ6c4uPqaGEGufvSfigFh7che4u?usp=drive_link).
 
 
 ## (OPtional) Training
@@ -79,6 +80,11 @@ We have adapted the CoMaR framework for the baseline methods [ETPNav](https://gi
 ```bash
 # Evaluate on R2R-CE
 CUDA_VISIBLE_DEVICES=0,1 bash run_r2r/main.bash eval 2333
+```
+
+```bash
+# Evaluate on RxR-CE
+CUDA_VISIBLE_DEVICES=0,1 bash run_rxr/main.bash eval 2333
 ```
 
 ### For g3D-LF
